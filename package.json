@@ -21,6 +21,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/register": "^7.17.0",
     "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0"
+    "gulp-cli": "^2.3.0",
+    "yargs": "^17.3.1"
   }
 }
