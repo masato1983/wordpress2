@@ -20,10 +20,12 @@
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/register": "^7.17.0",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-cli": "^2.3.0",
     "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^5.1.0",
     "sass": "^1.49.9",
     "yargs": "^17.3.1"
