@@ -11,6 +11,7 @@ import webpack from 'webpack-stream';
 import uglify from 'gulp-uglify';
 import named from 'vinyl-named';
 import browserSync from 'browser-sync';
+import zip from 'gulp-zip';
 
 const sass = gulpSass(dartSass);
 const server = browserSync.create();
@@ -32,6 +33,10 @@ const paths = {
     other: {
         src: ['src/assets/**/*', '!src/assets/{images,js,scss}', '!src/assets/{images,js,scss}/**/*' ],
         dest: 'dist/assets'
+    },
+    package: {
+        src: ['**/*', '!.vscode', '!node_modules{,/**}', '!packaged{,/**}', '!src{,/**}', '!.babelrc', '!.gitignore', '!gulpfile.babel.js', '!package.json', '!package-lock.json'],
+        dest: 'packaged'
     }
 }
 
@@ -50,7 +55,7 @@ export const reload = (done) => {
 }
         
 // clean
-export const clean = () => del('dist');
+export const clean = () => del(['dist', 'packaged']);
 
 // styles
 export const styles = () => {
@@ -119,9 +124,17 @@ export const copy = () => {
         .pipe(gulp.dest(paths.other.dest));
 }
 
-// dev, build
+// compress
+export const compress = () => {
+    return gulp.src(paths.package.src)
+        .pipe(zip('udemyWordpress2.zip'))
+        .pipe(gulp.dest(paths.package.dest));
+}
+
+// dev, build, bundle
 export const dev = gulp.series(clean, gulp.parallel(styles, scripts, images, copy), serve, watch);
 export const build = gulp.series(clean, gulp.parallel(styles, scripts, images, copy));
+export const bundle = gulp.series(build, compress);
 
 // default
 export default dev;
