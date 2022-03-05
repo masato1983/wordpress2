@@ -57,7 +57,10 @@ export const reload = (done) => {
 }
         
 // clean
-export const clean = () => del(['dist', 'packaged']);
+export const clean = (done) => {
+    del(['dist', 'packaged']);
+    done();
+}
 
 // styles
 export const styles = () => {
