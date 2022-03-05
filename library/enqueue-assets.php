@@ -1,19 +1,19 @@
 <?php
 
 // theme style
-function udemyWordpress2_assets()
+function _themename_assets()
 {
-    wp_enqueue_style('udemy_worpress2-stylesheet', get_template_directory_uri() . '/dist/assets/css/bundle.css', array(), '1.0.0', 'all');
-    wp_enqueue_script('udemy_wordpress2-scripts', get_template_directory_uri() . '/dist/assets/js/bundle.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_style('_themename-stylesheet', get_template_directory_uri() . '/dist/assets/css/bundle.css', array(), '1.0.0', 'all');
+    wp_enqueue_script('_themename-scripts', get_template_directory_uri() . '/dist/assets/js/bundle.js', array('jquery'), '1.0.0', true);
 }
 
-add_action('wp_enqueue_scripts', 'udemyWordpress2_assets');
+add_action('wp_enqueue_scripts', '_themename_assets');
 
 // admin style
-function udemyWordpress2_admin_assets()
+function _themename_admin_assets()
 {
-    wp_enqueue_style('udemy_worpress2-admin-stylesheet', get_template_directory_uri() . '/dist/assets/css/admin.css', array(), '1.0.0', 'all');
-    wp_enqueue_script('udemy_wordpress2-admin-scripts', get_template_directory_uri() . '/dist/assets/js/admin.js', array(), '1.0.0', true);
+    wp_enqueue_style('_themename-admin-stylesheet', get_template_directory_uri() . '/dist/assets/css/admin.css', array(), '1.0.0', 'all');
+    wp_enqueue_script('_themename-admin-scripts', get_template_directory_uri() . '/dist/assets/js/admin.js', array(), '1.0.0', true);
 }
 
-add_action('admin_enqueue_scripts', 'udemyWordpress2_admin_assets');
+add_action('admin_enqueue_scripts', '_themename_admin_assets');

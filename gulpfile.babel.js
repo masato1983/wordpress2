@@ -12,6 +12,8 @@ import uglify from 'gulp-uglify';
 import named from 'vinyl-named';
 import browserSync from 'browser-sync';
 import zip from 'gulp-zip';
+import replace from 'gulp-replace';
+import info from './package.json';
 
 const sass = gulpSass(dartSass);
 const server = browserSync.create();
@@ -127,7 +129,8 @@ export const copy = () => {
 // compress
 export const compress = () => {
     return gulp.src(paths.package.src)
-        .pipe(zip('udemyWordpress2.zip'))
+        .pipe(replace('_themename', info.name))
+        .pipe(zip(`${info.name}.zip`))
         .pipe(gulp.dest(paths.package.dest));
 }
 
